@@ -12,6 +12,7 @@ else:
             print("See you next time!")
             break
         else:
+            print("--------------------------------------------------------")
             cont = input("Do you want to continue with another operation?(Y/N)")
             if(cont == "Y"):
                 f2 = functions.operation_input()
