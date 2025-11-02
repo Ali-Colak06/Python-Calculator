@@ -169,21 +169,16 @@ def division():
 
 def exponentiation():
     b = input("Please enter the bottom number: ")
-    u = input("Please enter the top number as integer: ")
+    u = input("Please enter the top number: ")
     f1 = test_the_input(b)
     f2 = test_the_input(u)
-    result = 1
     if (f1 and f2):
-        if (int(u) < 0):
-            for i in range(-int(u)):
-                result *= int(b)
-            result = 1/result
-        else:
-            for i in range(int(u)):
-                result *= int(b)
-        history[f"{b} ^ {u}"] = result
-        print(result)
-        return result
+        if(float(b) != 0 and float(u) != 0):
+            result = float(b) ** float(u)
+            history[f"{b} ^ {u}"] = result
+            print(result)
+            return result
+        else: print("The expression 0^0 is undefined!")
                 
 def absolute_value():
     n = input("Please enter a number: ")
@@ -271,9 +266,16 @@ def see_history():
             key_to_index.append(k)
             print(f"{index_num}) --> {k} : {v}")
             index_num += 1
-        cont = input("Do you want to delete history? (Y/N)")
-        if (cont == "Y"):
-            deleted_item_index = int(input("Please enter the operation number: "))
-            deleted_item_key = key_to_index[deleted_item_index]
-            del(history[deleted_item_key])
+        cont = input("Press 'Y' to delete operations from history (To exit press anything else): ")
+        if (cont == "Y" or cont == "y"):
+            while(True):
+                deleted_item_index = input("Please enter the operation index number: ")
+                try:
+                    deleted_item_key = key_to_index[int(deleted_item_index)]
+                    del(history[deleted_item_key])
+                    see_history()
+                    break
+                except:
+                    print("Wrong input!")
+                    continue
     else: print("The history is empty")
