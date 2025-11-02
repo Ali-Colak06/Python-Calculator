@@ -14,8 +14,11 @@ else:
         else:
             print("--------------------------------------------------------")
             cont = input("Do you want to continue with another operation?(Y/N)")
-            if(cont == "Y"):
+            if(cont == "Y" or cont == "y"):
                 f2 = functions.operation_input()
-            else:
+            elif(cont == "N" or cont == "n"):
                 print("See you next time!")
                 break
+            else:
+                print("Wrong input type! Please try again.")
+                continue
